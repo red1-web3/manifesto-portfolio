@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Mona-Sans-Light;
+  src: url("/assets/Mona-Sans/Mona-Sans-Light.woff2");
+}
+@font-face {
+  font-family: Mona-Sans-Bold;
+  src: url("/assets/Mona-Sans/Mona-Sans-Bold.woff2");
+}
+
+body {
+  @apply bg-[#0C0C0C] text-white;
+}
