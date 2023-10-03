@@ -14,3 +14,9 @@
 body {
   @apply bg-[#0C0C0C] text-white;
 }
+
+@layer components {
+  .__c_all {
+    @apply flex items-center justify-center;
+  }
+}

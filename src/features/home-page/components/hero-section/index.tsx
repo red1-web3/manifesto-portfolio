@@ -38,7 +38,7 @@ const HeroSection = () => {
           {
             backgroundSize: "100% 100%",
           },
-          "+=.5"
+          "+=.6"
         );
     });
 
@@ -79,12 +79,13 @@ const HeroSection = () => {
             ref={textContentWrapper}
           >
             <span
-              className="relative bg-no-repeat"
+              className="relative"
               style={{
                 WebkitTextFillColor: "rgba(255,255,255,0.1)",
                 WebkitBackgroundClip: "text",
                 backgroundImage: "linear-gradient(#fff, #fff)",
                 backgroundSize: "0% 100%",
+                backgroundRepeat: "no-repeat",
               }}
               ref={textContent}
             >

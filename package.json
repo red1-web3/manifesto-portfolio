@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "clsx": "^2.0.0",
+    "framer-motion": "^10.16.4",
     "gsap": "^3.12.2",
     "hamburger-react": "^2.5.0",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-icons": "^4.11.0"
   },
   "devDependencies": {
     "@types/node": "latest",

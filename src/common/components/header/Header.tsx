@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="py-8 px-20 fixed top-0 left-0 w-full z-[99]">
+    <header className="py-8 pl-20 pr-[66px] fixed top-0 left-0 w-full z-[99]">
       <div className="flex items-center justify-between">
         <Link href={"/"}>
           <Image
