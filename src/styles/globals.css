@@ -14,7 +14,9 @@
 body {
   @apply bg-[#0C0C0C] text-white;
 }
-
+#__next {
+  @apply max-w-[100vw] overflow-x-hidden;
+}
 @layer components {
   .__c_all {
     @apply flex items-center justify-center;

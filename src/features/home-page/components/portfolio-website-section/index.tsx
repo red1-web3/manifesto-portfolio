@@ -3,7 +3,7 @@ import clsx from "clsx";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Image, { ImageProps } from "next/image";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { HiArrowRight } from "react-icons/hi";
 
 const PortfolioWebsiteSection = () => {
@@ -27,7 +27,7 @@ const PortfolioWebsiteSection = () => {
         trigger: ".__title_portfolio_website",
         start: "top 90%",
         end: "top 70%",
-        scrub: 2,
+        scrub: 1,
       },
     });
     return () => {
@@ -196,8 +196,30 @@ const ImageComponent = ({
   defaultHeight: number;
   size?: "sm" | "lg";
 }) => {
+  const imgTarget = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to(imgTarget.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        stagger: 1,
+
+        scrollTrigger: {
+          trigger: imgTarget.current,
+          start: "center bottom",
+        },
+      });
+    });
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+
   return (
-    <div className="group">
+    <div className="group opacity-0 translate-y-12" ref={imgTarget}>
       <div className="overflow-hidden" style={{ height: defaultHeight }}>
         <Image
           style={{ height: defaultHeight }}
