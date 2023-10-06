@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import gsap from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { useEffect, useRef } from "react";
 
 const HeroSection = () => {
@@ -9,7 +8,6 @@ const HeroSection = () => {
   const textContent = useRef(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       gsap
         .timeline({

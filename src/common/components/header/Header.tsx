@@ -1,8 +1,10 @@
 import { Pivot as Hamburger } from "hamburger-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const Header = () => {
+  const [isActiveNav, setIsActiveNav] = useState(false);
   return (
     <header className="py-8 pl-20 pr-[66px] fixed top-0 left-0 w-full z-[99]">
       <div className="flex items-center justify-between">
@@ -25,14 +27,17 @@ const Header = () => {
           </div>
         </Link>
 
-        <div className="relative">
-          <div className="__hamburger_white">
-            <Hamburger size={20} />
+        <button
+          className="relative isolate"
+          onClick={() => setIsActiveNav((prev) => !prev)}
+        >
+          <div className="__hamburger_white relative">
+            <Hamburger size={20} toggled={isActiveNav} />
           </div>
           <div className="__hamburger_black absolute top-0 left-0 z-[-1] text-black">
-            <Hamburger size={20} />
+            <Hamburger size={20} toggled={isActiveNav} />
           </div>
-        </div>
+        </button>
       </div>
     </header>
   );

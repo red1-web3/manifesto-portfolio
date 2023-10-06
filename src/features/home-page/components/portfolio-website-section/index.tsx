@@ -1,14 +1,12 @@
 /* eslint-disable jsx-a11y/alt-text */
 import clsx from "clsx";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Image, { ImageProps } from "next/image";
 import { useEffect, useRef } from "react";
 import { HiArrowRight } from "react-icons/hi";
 
 const PortfolioWebsiteSection = () => {
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       gsap.to("._portfolio_website_texts", {
         backgroundSize: "100%",
