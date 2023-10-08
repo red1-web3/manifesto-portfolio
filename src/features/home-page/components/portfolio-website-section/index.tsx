@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/alt-text */
+import LinkButton from "@/common/components/link-button";
 import clsx from "clsx";
 import gsap from "gsap";
 import Image, { ImageProps } from "next/image";
 import { useEffect, useRef } from "react";
-import { HiArrowRight } from "react-icons/hi";
 
 const PortfolioWebsiteSection = () => {
   useEffect(() => {
@@ -78,19 +78,7 @@ const PortfolioWebsiteSection = () => {
               This enables us to demonstrate the limitless potential and
               showcase the impressive features of our template.
             </p>
-
-            <a
-              href="#"
-              className="mt-4 text-xl font-medium flex items-center gap-x-5 group"
-            >
-              <span>Learn More</span>
-
-              <div className="text-base h-11 aspect-square scale-[.2] duration-200 ease-out group-hover:scale-100 __c_all text-black bg-white rounded-full">
-                <span className="-translate-x-5 inline-block group-hover:scale-100 group-hover:translate-x-0 duration-200 ease-in scale-0">
-                  <HiArrowRight />
-                </span>
-              </div>
-            </a>
+            <LinkButton label="Learn More" />
           </div>
         </div>
       </div>

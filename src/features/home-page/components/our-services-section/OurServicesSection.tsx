@@ -65,33 +65,37 @@ const OurServicesSection = () => {
         },
       });
 
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: outerPinner.current,
-          start: "-5% 10%",
-          end: "+=2000",
-          pin: section.current,
-          scrub: 1,
-          onUpdate: (e) => {
-            console.log(-e.progress * 100);
-
-            gsap.set(".__services_slider_wrapper", {
-              yPercent: -e.progress * 100,
-            });
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: outerPinner.current,
+            start: "-1% 10%",
+            end: "+=1500",
+            pin: section.current,
+            pinSpacing: true,
+            scrub: 1,
+            // onUpdate: (e) => {
+            //   gsap.set(".__services_slider_wrapper", {
+            //     yPercent: -e.progress * 60,
+            //   });
+            // },
           },
-        },
-      });
-
-      gsap.to(bottomTextWrapper.current, {
-        yPercent: -150,
-        scrollTrigger: {
-          trigger: bottomTextWrapper.current,
-          start: "400% top",
-          end: "500% top",
-          scrub: 3,
-          markers: true,
-        },
-      });
+        })
+        .to(".__services_slider_wrapper", { yPercent: -100 })
+        .to(
+          bottomTextWrapper.current,
+          {
+            yPercent: -250,
+          },
+          "-=.3"
+        )
+        .to(
+          ".__services_section_text",
+          {
+            backgroundSize: "100%",
+          },
+          "-=.3"
+        );
     });
     return () => {
       ctx.revert();
@@ -101,7 +105,7 @@ const OurServicesSection = () => {
   return (
     <section
       ref={section}
-      className="py-40 mt-40 bg-white w-full scale-[.85] mx-auto"
+      className="pt-40 mt-40 bg-white w-full scale-[.85] mx-auto"
     >
       <div ref={outerPinner} className="w-full">
         <h4 className="text-black font-semibold __c_all text-center w-screen">
@@ -121,7 +125,11 @@ const OurServicesSection = () => {
 
         <ServiceSlider />
 
-        <div className="px-20">
+        <div
+          className="px-20 mt-28
+        
+        "
+        >
           <div
             className="grid grid-cols-2 gap-x-[4%] translate-y-full"
             ref={bottomTextWrapper}
