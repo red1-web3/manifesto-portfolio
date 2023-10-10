@@ -22,3 +22,36 @@ body {
     @apply flex items-center justify-center;
   }
 }
+
+.hovered_link_btn .icon1 {
+  @apply translate-x-[150%];
+}
+.hovered_link_btn .icon2 {
+  @apply translate-x-[0%];
+}
+.hovered_link_btn .icon3 {
+  @apply translate-x-[-150%];
+}
+
+.hovered_link_btn svg,
+.hover_out_link_btn svg {
+  transition-delay: 50ms;
+}
+
+.hover_out_link_btn .icon1 {
+  @apply translate-x-[300%];
+}
+.hover_out_link_btn .icon2 {
+  @apply translate-x-[150%];
+}
+.hover_out_link_btn .icon3 {
+  @apply translate-x-[0%];
+}
+
+.noDuration svg {
+  @apply duration-0;
+}
+
+.__transition {
+  transition: 0.5s cubic-bezier(0.6, 0, 0.1, 1);
+}

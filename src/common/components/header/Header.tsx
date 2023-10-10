@@ -1,3 +1,4 @@
+import Magnetic from "@/common/components/magnetic";
 import { Pivot as Hamburger } from "hamburger-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,17 +28,19 @@ const Header = () => {
           </div>
         </Link>
 
-        <button
-          className="relative isolate"
-          onClick={() => setIsActiveNav((prev) => !prev)}
-        >
-          <div className="__hamburger_white relative">
-            <Hamburger size={20} toggled={isActiveNav} />
-          </div>
-          <div className="__hamburger_black absolute top-0 left-0 z-[-1] text-black">
-            <Hamburger size={20} toggled={isActiveNav} />
-          </div>
-        </button>
+        <Magnetic>
+          <button
+            className="relative isolate"
+            onClick={() => setIsActiveNav((prev) => !prev)}
+          >
+            <div className="__hamburger_white relative">
+              <Hamburger size={20} toggled={isActiveNav} />
+            </div>
+            <div className="__hamburger_black absolute top-0 left-0 z-[-1] text-black">
+              <Hamburger size={20} toggled={isActiveNav} />
+            </div>
+          </button>
+        </Magnetic>
       </div>
     </header>
   );

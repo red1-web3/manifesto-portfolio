@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
+import ButtonOutline from "@/common/components/button-outline";
 import LinkButton from "@/common/components/link-button";
 import clsx from "clsx";
 import gsap from "gsap";
@@ -158,9 +159,7 @@ const PortfolioWebsiteSection = () => {
         </h2>
 
         <div className="mt-5 __c_all">
-          <button className="h-11 px-10 rounded-full border-2 border-white capitalize">
-            View all works
-          </button>
+          <ButtonOutline />
         </div>
       </div>
     </section>
