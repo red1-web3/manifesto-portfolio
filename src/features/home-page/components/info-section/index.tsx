@@ -1,6 +1,7 @@
 import LinkButton from "@/common/components/link-button";
 import { articles } from "@/config/constants/articles";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { ReactNode, useEffect, useRef } from "react";
 import Marquee from "react-fast-marquee";
 
@@ -9,7 +10,7 @@ const InfoSection = () => {
     <section className="py-28">
       <Marquee speed={150}>
         <h2 className="text-[calc(1rem+4.5vw)]/[calc(1rem+4.5vw)] uppercase">
-          <span className="font-mona-sans-bold">Stay Informed. </span>
+          <span className="font-mona-sans-bold pl-2">Stay Informed. </span>
           <span className="font-mona-sans-light">The buzz feed. </span>
         </h2>
       </Marquee>
@@ -44,9 +45,12 @@ const Row = ({
       gsap.timeline({
         scrollTrigger: {
           trigger: parent.current,
-          start: "top 20%",
-          markers: true,
+          start: `top 20%`,
           onEnter: () => {
+            setTimeout(() => {
+              ScrollTrigger.refresh();
+            }, 100);
+
             gsap.to(descTarget.current, {
               height: 0,
               autoAlpha: 0,
@@ -91,9 +95,9 @@ const Row = ({
     <div
       className="grid grid-cols-2 py-20 px-20 __dsds border-b border-[#0000001a]"
       ref={parent}
-      // style={{
-      //   borderBottom: "1px solid #0000001a",
-      // }}
+      style={{
+        borderBottom: "1px solid #0000001a",
+      }}
     >
       <div className="grid grid-cols-2">
         <p className="text-[#777]"> {date}</p>

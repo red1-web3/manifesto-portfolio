@@ -5,7 +5,7 @@ export const articles = [
     title: (
       <h3>
         The Art Of
-        <strong className="font-mona-sans-bold">Web Animation</strong>
+        <strong className="font-mona-sans-bold"> Web Animation</strong>
       </h3>
     ),
     description:

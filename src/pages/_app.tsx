@@ -15,7 +15,18 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
+
     return () => {};
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const LocomotiveScroll = (await import("locomotive-scroll")).default;
+      const locomotiveScroll = new LocomotiveScroll();
+    })();
   }, []);
 
   return (
