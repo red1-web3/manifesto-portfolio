@@ -1,9 +1,10 @@
 import { services } from "@/config/constants/services";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 
 const OurServicesSection = () => {
   const section = useRef(null);
+  const titleWrapper = useRef(null);
   const title = useRef(null);
   const outerPinner = useRef(null);
   const bottomTextWrapper = useRef(null);
@@ -55,47 +56,14 @@ const OurServicesSection = () => {
         },
       });
 
-      gsap.to(".__services_slider_wrapper", {
-        y: 0,
-        duration: 2,
+      gsap.to(".__services_section_text", {
+        backgroundSize: "100%",
         scrollTrigger: {
-          trigger: title.current,
-          start: "top center",
-          scrub: 2,
+          trigger: bottomTextWrapper.current,
+          start: "top 80%",
+          scrub: 1,
         },
       });
-
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: outerPinner.current,
-            start: "-1% 10%",
-            end: "+=1500",
-            pin: section.current,
-            pinSpacing: true,
-            scrub: 1,
-            // onUpdate: (e) => {
-            //   gsap.set(".__services_slider_wrapper", {
-            //     yPercent: -e.progress * 60,
-            //   });
-            // },
-          },
-        })
-        .to(".__services_slider_wrapper", { yPercent: -100 })
-        .to(
-          bottomTextWrapper.current,
-          {
-            yPercent: -250,
-          },
-          "-=.3"
-        )
-        .to(
-          ".__services_section_text",
-          {
-            backgroundSize: "100%",
-          },
-          "-=.3"
-        );
     });
     return () => {
       ctx.revert();
@@ -105,10 +73,13 @@ const OurServicesSection = () => {
   return (
     <section
       ref={section}
-      className="pt-40 mt-40 bg-white w-full scale-[.85] mx-auto"
+      className="py-40 mt-40 bg-white w-full scale-[.85] mx-auto"
     >
       <div ref={outerPinner} className="w-full">
-        <h4 className="text-black font-semibold __c_all text-center w-screen">
+        <h4
+          className="text-black font-semibold __c_all text-center w-screen"
+          ref={titleWrapper}
+        >
           <span
             ref={title}
             style={{
@@ -130,10 +101,7 @@ const OurServicesSection = () => {
         
         "
         >
-          <div
-            className="grid grid-cols-2 gap-x-[4%] translate-y-full"
-            ref={bottomTextWrapper}
-          >
+          <div className="grid grid-cols-2 gap-x-[4%]" ref={bottomTextWrapper}>
             <div className="grid grid-cols-2">
               <span
                 style={{
@@ -190,35 +158,53 @@ const OurServicesSection = () => {
 export default OurServicesSection;
 
 const ServiceSlider = () => {
-  const sliderWrapper = useRef<null | HTMLUListElement>(null);
-  const wrapper = useRef(null);
-
   return (
     <div className="mt-28">
-      <div
-        className="h-[50vh] origin-center overflow-hidden relative"
-        ref={wrapper}
-        style={{
-          transform: "rotateX(35deg)",
-        }}
-      >
-        <ul
-          ref={sliderWrapper}
-          className="__services_slider_wrapper translate-y-[35%]"
-        >
+      <div className="origin-center relative">
+        <ul className="__services_slider_wrapper">
           {services.map((service, i) => (
-            <li
-              key={i}
-              className="text-black text-[calc(1rem+3vw)]/[calc(1rem+4.5vw)] text-center font-mona-sans-light uppercase"
-            >
-              {service}
-            </li>
+            <Service service={service} key={i} />
           ))}
         </ul>
 
-        <div className="h-[15vh] w-full absolute top-0 left-0 bg-gradient-to-b from-white"></div>
-        <div className="h-[15vh] w-full absolute bottom-0 left-0 bg-gradient-to-t from-white"></div>
+        {/* <div className="h-[15vh] w-full absolute top-0 left-0 bg-gradient-to-b from-white"></div>
+        <div className="h-[15vh] w-full absolute bottom-0 left-0 bg-gradient-to-t from-white"></div> */}
       </div>
     </div>
+  );
+};
+
+const Service = ({ service }: { service: ReactNode }) => {
+  const ref = useRef(null);
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to(ref.current, {
+        backgroundSize: "100%",
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top bottom",
+          scrub: 1,
+        },
+      });
+    });
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+  return (
+    <li
+      ref={ref}
+      style={{
+        WebkitTextFillColor: "rgba(0, 0, 0, 0.15)",
+        WebkitBackgroundClip: "text",
+        backgroundImage: "linear-gradient(#000, #000)",
+        backgroundSize: "0% 100%",
+        backgroundRepeat: "no-repeat",
+      }}
+      className="text-black __services_list text-[calc(1rem+3vw)]/[calc(1rem+4vw)] font-mona-sans-light uppercase text-center overflow-hidden"
+    >
+      {service}
+    </li>
   );
 };

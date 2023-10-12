@@ -3,6 +3,7 @@ import HeroSection from "@/features/home-page/components/hero-section";
 import InfoSection from "@/features/home-page/components/info-section";
 import OurServicesSection from "@/features/home-page/components/our-services-section/OurServicesSection";
 import PortfolioWebsiteSection from "@/features/home-page/components/portfolio-website-section";
+import StudioSection from "@/features/home-page/components/studio-section";
 
 const HomePage = () => {
   return (
@@ -12,8 +13,7 @@ const HomePage = () => {
       <PortfolioWebsiteSection />
       <OurServicesSection />
       <InfoSection />
-
-      <div className="h-[200vh]"></div>
+      <StudioSection />
     </>
   );
 };

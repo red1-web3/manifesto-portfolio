@@ -23,6 +23,7 @@ body {
   }
 }
 
+/* Link Button */
 .hovered_link_btn .icon1 {
   @apply translate-x-[150%];
 }
