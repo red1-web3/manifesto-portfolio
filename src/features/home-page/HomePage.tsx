@@ -1,3 +1,4 @@
+import Footer from "@/common/components/footer";
 import Header from "@/common/components/header/Header";
 import HeroSection from "@/features/home-page/components/hero-section";
 import InfoSection from "@/features/home-page/components/info-section";
@@ -14,6 +15,7 @@ const HomePage = () => {
       <OurServicesSection />
       <InfoSection />
       <StudioSection />
+      <Footer />
     </>
   );
 };

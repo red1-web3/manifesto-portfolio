@@ -11,7 +11,7 @@ const StudioSection = () => {
         scrollTrigger: {
           trigger: target.current,
           start: "top bottom",
-          end: "70%",
+          end: "top center",
           scrub: 1,
         },
       });
