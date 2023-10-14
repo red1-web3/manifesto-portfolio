@@ -23,7 +23,7 @@ const StudioSection = () => {
   }, []);
 
   return (
-    <section className="pt-[180px] pb-[130px]">
+    <section className="pt-[180px] pb-[160px]">
       <div className="text-center opacity-0" ref={target}>
         <h2>
           <p className="text-[calc(1rem+5.15vw)]/[calc(1rem+5.5vw)] font-mona-sans-light uppercase">

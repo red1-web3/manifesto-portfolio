@@ -1,5 +1,6 @@
 import { services } from "@/config/constants/services";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { ReactNode, useEffect, useRef } from "react";
 
 const OurServicesSection = () => {
@@ -18,33 +19,46 @@ const OurServicesSection = () => {
           start: "top bottom",
           end: "top 75%",
           scrub: 1,
+          onLeave: () => {
+            ScrollTrigger.refresh();
+          },
+          onScrubComplete: () => {
+            ScrollTrigger.refresh();
+          },
         },
       });
 
-      gsap.to(".__logo_white, .__hamburger_white", {
-        clipPath: "inset(0 0 100% 0)",
-
+      gsap.timeline({
         scrollTrigger: {
           trigger: section.current,
-          start: "-80px 10%",
-          end: "-80px top",
-          scrub: true,
+          start: "top 8%",
+          end: "bottom 8%",
+          onEnter: () => {
+            gsap.to(".__hamburger_white, .__logo_white", { autoAlpha: 0 });
+          },
+          onEnterBack: () => {
+            gsap.to(".__hamburger_white, .__logo_white", { autoAlpha: 0 });
+          },
+          onLeave: () => {
+            gsap.to(".__hamburger_white, .__logo_white", { autoAlpha: 1 });
+          },
+          onLeaveBack: () => {
+            gsap.to(".__hamburger_white, .__logo_white", { autoAlpha: 1 });
+          },
         },
       });
-      gsap.to(".__logo_white, .__hamburger_white", {
-        clipPath: "inset(0 0 0 0)",
 
-        scrollTrigger: {
-          trigger: section.current,
-          start: "77% 9%",
-          scrub: true,
-          onLeaveBack: () =>
-            gsap.to(".__logo_white, .__hamburger_white", {
-              clipPath: "inset(0 0 100% 0)",
-              duration: 0,
-            }),
-        },
-      });
+      // gsap.to(".__header_light", {
+      //   clipPath: "inset(0 0 0 0)",
+
+      //   scrollTrigger: {
+      //     trigger: section.current,
+      //     start: "bottom 117.6px",
+      //     end: "top top",
+      //     scrub: true,
+      //     markers: true,
+      //   },
+      // });
 
       gsap.to(title.current, {
         backgroundSize: "100%",
@@ -166,9 +180,6 @@ const ServiceSlider = () => {
             <Service service={service} key={i} />
           ))}
         </ul>
-
-        {/* <div className="h-[15vh] w-full absolute top-0 left-0 bg-gradient-to-b from-white"></div>
-        <div className="h-[15vh] w-full absolute bottom-0 left-0 bg-gradient-to-t from-white"></div> */}
       </div>
     </div>
   );
@@ -180,6 +191,7 @@ const Service = ({ service }: { service: ReactNode }) => {
     const ctx = gsap.context(() => {
       gsap.to(ref.current, {
         backgroundSize: "100%",
+        scale: 1,
         scrollTrigger: {
           trigger: ref.current,
           start: "top bottom",
@@ -202,7 +214,7 @@ const Service = ({ service }: { service: ReactNode }) => {
         backgroundSize: "0% 100%",
         backgroundRepeat: "no-repeat",
       }}
-      className="text-black __services_list text-[calc(1rem+3vw)]/[calc(1rem+4vw)] font-mona-sans-light uppercase text-center overflow-hidden"
+      className="text-black __services_list scale-75 text-[calc(1rem+3vw)]/[calc(1rem+4vw)] font-mona-sans-light uppercase text-center overflow-hidden"
     >
       {service}
     </li>

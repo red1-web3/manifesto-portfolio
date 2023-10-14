@@ -25,8 +25,8 @@ export default function Magnetic({ children }: MagneticProps): ReactElement {
         magnetic.current!!.getBoundingClientRect();
       const x = clientX - (left + width / 2);
       const y = clientY - (top + height / 2);
-      xTo(x * 0.35);
-      yTo(y * 0.35);
+      xTo(x * 1);
+      yTo(y * 1);
     };
 
     const handleMouseLeave = () => {

@@ -36,7 +36,7 @@ const Header = () => {
             <div className="__hamburger_white relative">
               <Hamburger size={20} toggled={isActiveNav} />
             </div>
-            <div className="__hamburger_black absolute top-0 left-0 z-[-1] text-black">
+            <div className="__hamburger_black absolute top-0 left-0 text-black z-[-1]">
               <Hamburger size={20} toggled={isActiveNav} />
             </div>
           </button>
