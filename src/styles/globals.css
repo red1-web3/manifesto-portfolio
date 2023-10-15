@@ -85,3 +85,13 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #444;
 }
+
+.__line_bg {
+  background-image: repeating-linear-gradient(
+    to right,
+    #f5f2eb34 0%,
+    #f5f2eb34 0.01%,
+    transparent 0.1%,
+    transparent 20.4%
+  );
+}

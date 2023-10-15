@@ -34,16 +34,28 @@ const OurServicesSection = () => {
           start: "top 8%",
           end: "bottom 8%",
           onEnter: () => {
-            gsap.to(".__hamburger_white, .__logo_white", { autoAlpha: 0 });
+            gsap.to(".__hamburger_white, .__logo_white", {
+              duration: 0.2,
+              autoAlpha: 0,
+            });
           },
           onEnterBack: () => {
-            gsap.to(".__hamburger_white, .__logo_white", { autoAlpha: 0 });
+            gsap.to(".__hamburger_white, .__logo_white", {
+              duration: 0.2,
+              autoAlpha: 0,
+            });
           },
           onLeave: () => {
-            gsap.to(".__hamburger_white, .__logo_white", { autoAlpha: 1 });
+            gsap.to(".__hamburger_white, .__logo_white", {
+              duration: 0.2,
+              autoAlpha: 1,
+            });
           },
           onLeaveBack: () => {
-            gsap.to(".__hamburger_white, .__logo_white", { autoAlpha: 1 });
+            gsap.to(".__hamburger_white, .__logo_white", {
+              duration: 0.2,
+              autoAlpha: 1,
+            });
           },
         },
       });
