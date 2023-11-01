@@ -8,11 +8,20 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-const overlayStatusAtom = atom<"active_overlay" | "unactive_overlay" | "">("");
+const navOverlayStatusAtom = atom<"" | "__activeNav" | "__deActiveNav">("");
 
 const Header = () => {
   const [activeNav, setActiveNav] = useState(false);
-  const [overlayStatus, setOverlayStatus] = useAtom(overlayStatusAtom);
+  const [navOverlayStatus, setnavOverlayStatus] = useAtom(navOverlayStatusAtom);
+
+  const handleClickNavMenu = () => {
+    setActiveNav((prev) => !prev);
+    if (!navOverlayStatus) {
+      setnavOverlayStatus((prev) =>
+        prev === "__activeNav" ? "__deActiveNav" : "__activeNav"
+      );
+    }
+  };
 
   return (
     <>
@@ -38,12 +47,7 @@ const Header = () => {
           </Link>
 
           <Magnetic>
-            <button
-              className="relative isolate"
-              onClick={() => {
-                setActiveNav((prev) => !prev);
-              }}
-            >
+            <button className="relative isolate" onClick={handleClickNavMenu}>
               <div className="__hamburger_white relative">
                 <Hamburger size={20} toggled={activeNav} />
               </div>
@@ -54,7 +58,7 @@ const Header = () => {
           </Magnetic>
         </div>
       </header>
-      <Overlay />
+      {/* <Overlay /> */}
     </>
   );
 };
@@ -77,30 +81,14 @@ const navItems = [
 ];
 
 const Overlay = () => {
-  // const [activeNav, setActiveNav] = useAtom(activeNavAtom);
+  const [navOverlayStatus] = useAtom(navOverlayStatusAtom);
   const router = useRouter();
+  console.log(navOverlayStatus);
 
   return (
-    <>
-      {/* Overlay 1 */}
-      <div
-        className={cxm(
-          "fixed inset-0 z-[98] bg-black -translate-x-full duration-500"
-        )}
-      ></div>
-      {/* Overlay 2 */}
-      <div
-        className={cxm(
-          "fixed inset-0 z-[96] bg-black -translate-x-full ease-in-out"
-        )}
-        // style={{ transitionProperty: "cubic-bezier(0,.78,1,.35)" }}
-      ></div>
+    <div className={navOverlayStatus}>
       {/* Main Overlay */}
-      <div
-        className={cxm(
-          "fixed inset-0 bg-[#171614] z-[97] __line_bg -translate-x-full"
-        )}
-      >
+      <div className={cxm("fixed inset-0 bg-[#171614] z-[97] __overlay_main")}>
         <div className="absolute top-1/2 -translate-y-1/2 h-[75vh] left-[20.4%] w-[61.2%] p-8">
           <div className="flex justify-between h-full">
             <div className="h-full flex flex-col justify-between">
@@ -163,6 +151,6 @@ const Overlay = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };

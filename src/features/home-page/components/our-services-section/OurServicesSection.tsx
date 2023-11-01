@@ -1,6 +1,5 @@
 import { services } from "@/config/constants/services";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { ReactNode, useEffect, useRef } from "react";
 
 const OurServicesSection = () => {
@@ -19,12 +18,6 @@ const OurServicesSection = () => {
           start: "top bottom",
           end: "top 75%",
           scrub: 1,
-          onLeave: () => {
-            ScrollTrigger.refresh();
-          },
-          onScrubComplete: () => {
-            ScrollTrigger.refresh();
-          },
         },
       });
 
@@ -60,18 +53,6 @@ const OurServicesSection = () => {
         },
       });
 
-      // gsap.to(".__header_light", {
-      //   clipPath: "inset(0 0 0 0)",
-
-      //   scrollTrigger: {
-      //     trigger: section.current,
-      //     start: "bottom 117.6px",
-      //     end: "top top",
-      //     scrub: true,
-      //     markers: true,
-      //   },
-      // });
-
       gsap.to(title.current, {
         backgroundSize: "100%",
         scrollTrigger: {
@@ -87,6 +68,7 @@ const OurServicesSection = () => {
         scrollTrigger: {
           trigger: bottomTextWrapper.current,
           start: "top 80%",
+          end: "top 30%",
           scrub: 1,
         },
       });
