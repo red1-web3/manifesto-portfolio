@@ -11,10 +11,9 @@ const poppins = Poppins({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
+gsap.registerPlugin(ScrollTrigger);
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
     setTimeout(() => {
       ScrollTrigger.refresh();
     }, 500);
